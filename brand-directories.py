@@ -1,0 +1,1 @@
+brands = ["beautyfeatures", "inhealth", "babysafety", "beautyskincare", "allhair", "pregnancyandbaby", "fertilitystore", "haakaa"]
