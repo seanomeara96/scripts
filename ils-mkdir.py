@@ -1,4 +1,5 @@
 import os
+import sys
 # List of directory names I need to create
 brands = ["beautyfeatures", "inhealth", "babysafety", "beautyskincare",
           "allhair", "pregnancyandbaby", "fertilitystore", "haakaa"]
