@@ -16,7 +16,6 @@ new_dir_path = os.path.join(path_to_new_directory, new_dir_name)
 # make new parent directory
 os.mkdir(new_dir_path)
 
-
 # create new directory for each brand
 for x in brands:
     path = os.path.join(new_dir_path, x)
