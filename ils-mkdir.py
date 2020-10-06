@@ -4,6 +4,28 @@ import sys
 brands = ["beautyfeatures", "inhealth", "babysafety", "beautyskincare",
           "allhair", "pregnancyandbaby", "fertilitystore", "haakaa"]
 
+
+def instructions():
+    print("Supply a path and a new directory name as command line arguments.")
+
+
+# if no command line arguments are supplied
+if len(sys.argv) < 2:
+    instructions()
+    exit()
+
+# if only one argument is supplied
+if len(sys.argv) == 2:
+    print("You are missing an argument.")
+    instructions()
+    exit()
+
+# if too many arguments are supplied
+if len(sys.argv) > 3:
+    print("You have supplied too many arguments.")
+    instructions()
+    exit()
+
 # path to new directory
 path_to_new_directory = sys.argv[1]
 
