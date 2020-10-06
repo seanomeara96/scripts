@@ -18,7 +18,7 @@ os.mkdir(new_dir_path)
 
 # create new directory for each brand
 for x in brands:
-    subdirectory_name = x + "-" + sys.argv[2]
+    subdirectory_name = x + "-" + new_dir_name
     path = os.path.join(new_dir_path, subdirectory_name)
     os.mkdir(path)
 
