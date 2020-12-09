@@ -1,6 +1,6 @@
 import json
 csv = ""
-with open("csvjson.json") as json_file:
+with open("csvjson.json", newline="") as json_file:
     data = json.load(json_file)
     for item in data:
         outlinks = item["Internal outlinks"].split()
