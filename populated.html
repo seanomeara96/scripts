@@ -1,6 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
     <meta
       http-equiv="Content-Type"
       content="text/html; charset=%%GLOBAL_CharacterSet%%"
@@ -13,12 +18,16 @@
       }
 
       .GiftCertificate {
-        background-color:#8F1D1D;
-        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-image: url("banner.png");
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover;
+        border: .5px solid #ffffff;
         width: 560px;
-        border-collapse: collapse;
         margin: auto;
-        color:#fff;
+        color: #838383;
+        box-shadow: 0 0 10px 1px rgba(0,0,0,.5);
       }
 
       .GiftCertificateHeader {
@@ -71,6 +80,7 @@
         letter-spacing: -2px;
         font-weight: normal;
         margin: 0px;
+        font-family: "Dancing Script", cursive;
       }
 
       #GiftCertificateAmount {
