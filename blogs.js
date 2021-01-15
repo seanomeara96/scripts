@@ -4,7 +4,6 @@ const fs = require("fs");
 let data = [];
 let pageNumber = 1;
 async function getPosts() {
-  console.log("page", pageNumber);
   axios
     .get(`https://www.beautyfeatures.ie/blog/?page=${pageNumber}`)
     .then((res) => {
@@ -12,9 +11,9 @@ async function getPosts() {
       const blogPosts = [
         ...dom.window.document.querySelectorAll(".blog-title a"),
       ];
-      console.log("blogPosts.length", blogPosts.length);
       if (blogPosts.length) {
         blogPosts.forEach((a) => data.push(`${a.innerHTML}\t${a.href}`));
+        console.log(data);
         pageNumber++;
         getPosts();
       } else {
