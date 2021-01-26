@@ -3,7 +3,7 @@ const { JSDOM } = require("jsdom");
 let count = 0;
 let links;
 axios
-  .get("https://beautyfeatures.ie/")
+  .get("https://beautyfeatures.ie/the-ordinary/")
   .then((res) => {
     let dom = new JSDOM(res.data);
     links = new Array(...dom.window.document.querySelectorAll("a"));
