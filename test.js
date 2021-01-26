@@ -8,6 +8,7 @@ axios
     let dom = new JSDOM(res.data);
     links = new Array(...dom.window.document.querySelectorAll("a"));
     links = links.map((a) => a.href);
+    console.log(links.length);
     logLinkInfo();
   })
   .catch((err) => {
