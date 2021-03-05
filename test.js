@@ -2,7 +2,6 @@ const axios = require("axios");
 const fs = require("fs");
 let offset = 0;
 let url = `https://asgard.thehut.net/infinite`;
-
 function queryBlogPosts() {
   axios
     .post(url, {
@@ -26,9 +25,7 @@ function queryBlogPosts() {
     .then((res) => {
       if (res.data.data.length) {
         let string = res.data.data
-          .map((element) => {
-            return `${element.title}\t${element.date}\t${element.titleLink}\n`;
-          })
+          .map(element => `${element.title}\t${element.date}\t${element.titleLink}\n`)
           .join("");
         console.log(string);
         fs.appendFile("lookfantasticPosts.txt", string, (err) => {
