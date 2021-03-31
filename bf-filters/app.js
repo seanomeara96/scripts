@@ -10,9 +10,7 @@ const filtersApplied = data.map((el) => {
   el.filters = filters.join(";");
   return el;
 });
-
 console.log(filtersApplied);
-
 fs.writeFile("filtersApplied.json", JSON.stringify(filtersApplied), (err) => {
   if (err) throw Error(err);
 });
