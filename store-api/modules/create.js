@@ -1,4 +1,4 @@
-const store = "./config/axios-config";
+const store = require("../config/axios-config");
 
 const applyFilter = (productId, name, value) => {
   const data = {
@@ -8,12 +8,12 @@ const applyFilter = (productId, name, value) => {
   return new Promise(async (resolve, reject) => {
     try {
       const { status } = await store.post(
-        `/products/${productId}/custom-fields`,
+        `/catalog/products/${productId}/custom-fields`,
         data
       );
       resolve(status);
     } catch (err) {
-      reject(err.response.data.title);
+      reject(err);
     }
   });
 };
