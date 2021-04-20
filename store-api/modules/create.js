@@ -43,8 +43,8 @@ const applyManyFilters = (productId, filters) => {
   });
 };
 
-const applyManyFiltersToMany = (productIds, filters) => {
-  return new Promise((resolve, reject) => {
+const applyManyFiltersToMany = (productIds, filters) =>
+  new Promise((resolve, reject) => {
     let promises = [];
     productIds.forEach((product) => {
       const idKey = Object.keys(product);
@@ -54,9 +54,24 @@ const applyManyFiltersToMany = (productIds, filters) => {
       .then((results) => resolve(results))
       .catch(reject);
   });
-};
+
+const applySpecificFilters = (data) =>
+  new Promise((resolve, reject) => {
+    let promises = [];
+    data.forEach((item) => {
+      const id = item["Product Id"];
+      const filters = item["Filters"]
+        .split(";")
+        .map((filter) => filter.split("="));
+      filters.forEach((filter) => {
+        promises.push(applyFilter(id, filter[0], filter[1]));
+      });
+    });
+    Promise.allSettled(promises).then(resolve).catch(reject);
+  });
 
 exports.applyFilter = applyFilter;
 exports.applyFilterToMany = applyFilterToMany;
 exports.applyManyFilters = applyManyFilters;
 exports.applyManyFiltersToMany = applyManyFiltersToMany;
+exports.applySpecificFilters = applySpecificFilters;
