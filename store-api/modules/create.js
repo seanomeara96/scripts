@@ -51,12 +51,12 @@ const applyManyFiltersToMany = (productIds, filters) =>
       .catch(reject);
   });
 
-const applySpecificFilters = (data) =>
+const applySpecificFilters = (SKUs) =>
   new Promise((resolve, reject) => {
     let promises = [];
-    data.forEach((item) => {
-      const id = item["Product Id"];
-      const filters = item["Filters"]
+    SKUs.forEach((SKU) => {
+      const id = SKU["Product Id"];
+      const filters = SKU["Filters"]
         .split(";")
         .map((filter) => filter.split("="));
       filters.forEach((filter) => {
