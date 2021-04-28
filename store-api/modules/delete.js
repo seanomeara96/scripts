@@ -1,8 +1,8 @@
 const store = require("../config/axios-config");
 const { getFilters } = require("./read");
 
-const removeFilter = (productId, name, value) => {
-  return new Promise(async (resolve, reject) => {
+const removeFilter = (productId, name, value) =>
+  new Promise(async (resolve, reject) => {
     if (name == "" || value == "") reject();
     try {
       const filters = await getFilters(productId);
@@ -19,20 +19,18 @@ const removeFilter = (productId, name, value) => {
       reject(err);
     }
   });
-};
 
-const removeManyFilters = (productId, filters) => {
-  return new Promise((resolve, reject) => {
+const removeManyFilters = (productId, filters) =>
+  new Promise((resolve, reject) => {
     let promises = [];
     filters.forEach(({ name, value }) => {
       promises.push(removeFilter(productId, name, value));
     });
     Promise.allSettled(promises).then(resolve).catch(reject);
   });
-};
 
-const removeFilterFromMany = (productIds, name, value) => {
-  return new Promise((resolve, reject) => {
+const removeFilterFromMany = (productIds, name, value) =>
+  new Promise((resolve, reject) => {
     let promises = [];
     productIds.forEach((product) => {
       let idKey = Object.keys(product)[0];
@@ -40,10 +38,9 @@ const removeFilterFromMany = (productIds, name, value) => {
     });
     Promise.allSettled(promises).then(resolve).catch(reject);
   });
-};
 
-const removeManyFiltersFromMany = (productIds, filters) => {
-  return new Promise((resolve, reject) => {
+const removeManyFiltersFromMany = (productIds, filters) =>
+  new Promise((resolve, reject) => {
     let promises = [];
     productIds.forEach((product) => {
       let idKey = Object.keys(product)[0];
@@ -51,7 +48,6 @@ const removeManyFiltersFromMany = (productIds, filters) => {
     });
     Promise.allSettled(promises).then(resolve).catch(reject);
   });
-};
 
 exports.removeFilter = removeFilter;
 exports.removeManyFilters = removeManyFilters;
