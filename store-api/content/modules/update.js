@@ -28,8 +28,21 @@ const removeLine = (productId, lineToRemove) =>
     }
   });
 
+const addLineToMany = (productIds, lineToAdd) =>
+  new Promise((resolve, reject) => {
+    let promises = [];
+    productIds.forEach((product) => {
+      const idKey = Object.keys(product)[0];
+      promises.push(addLine(product[idKey], lineToAdd));
+    });
+    Promise.allSettled(promises)
+      .then((results) => resolve(results))
+      .catch(reject);
+  });
+
 exports.addLine = addLine;
 exports.removeLine = removeLine;
+exports.addLineToMany = addLineToMany;
 
 function getProductDescription(id) {
   return new Promise(async (resolve, reject) => {
