@@ -40,9 +40,22 @@ const addLineToMany = (productIds, lineToAdd) =>
       .catch(reject);
   });
 
+const removeLineFromMany = (productIds, lineToRemove) =>
+  new Promise((resolve, reject) => {
+    let promises = [];
+    productIds.forEach((product) => {
+      const idKey = Object.keys(product)[0];
+      promises.push(removeLine(product[idKey], lineToRemove));
+    });
+    Promise.allSettled(promises)
+      .then((res) => resolve(res))
+      .catch(reject);
+  });
+
 exports.addLine = addLine;
 exports.removeLine = removeLine;
 exports.addLineToMany = addLineToMany;
+exports.removeLineFromMany = removeLineFromMany;
 
 function getProductDescription(id) {
   return new Promise(async (resolve, reject) => {
